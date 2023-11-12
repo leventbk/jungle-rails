@@ -4,6 +4,7 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if enhanced_cart.length() != 0 %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -33,20 +34,23 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
-    </div>
+  <div class="col-xs-12">
+    <%= form_tag orders_path do %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%= cart_subtotal_cents %>"
+        data-name="Jungle"
+        data-description="Khurram Virani's Jungle Order"
+        data-locale="auto"
+        data-email="kvirani@gmail.com"
+        data-currency="cad">
+      </script>
+    <% end %>
   </div>
+</div>
+<% else %>
+<div class="alert alert-danger">CART IS EMPTY. PLEASE  <a href="<%= root_path %>">VISIT THE STORE</a> AND ADD SOME ITEMS</div>
+<% end %>
 
 </section>
