@@ -3,5 +3,7 @@ class Admin::DashboardController < ApplicationController
   name: Rails.configuration.admin[:name], 
   password: Rails.configuration.admin[:password]
   def show
+    @product_count = Product.all()
+    @category_count = Category.all()
   end
 end
