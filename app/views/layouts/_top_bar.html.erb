@@ -1,0 +1,7 @@
+<div class="bg-success p-2 d-flex justify-content-end text-light">
+  <% if current_user %>
+  Signed in as <%= current_user.first_name %> <span class="px-2">|</span> <%= link_to "Logout", '/logout', class: "text-light" %>
+  <% else %>
+  <%= link_to 'Login', '/login', class: 'text-light' %> <span class="px-2">|</span> <%= link_to 'Signup', '/signup', class: 'text-light' %>
+  <% end %>
+</div>
